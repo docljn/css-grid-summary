@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+	<title>CSS Flexbox Summary</title>
+	<meta charset="utf-8" media="screen">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles-flexbox.css">
+</head>
+<body>
+
+	<h1 id="top">CSS Flexbox</h1>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="css-grid.html">Grid</a></li>
+		<li><a href="css-flexbox.html">Flexbox</a></li>
+	</ul>
+  <h2>Contents</h2>
+  <!-- <ul>
+			<li><a href="#specs">Background and Specs</a></li>
+			<li><a href="#define">Defining the Grid</a></li>
+			<li><a href="#fr">The fr unit</a></li>
+			<li><a href="#rep">Repeat Notation</a></li>
+			<li><a href="#order">Auto-Placement and Order Rules</a></li>
+			<li><a href="#line">Line-based Placement</a></li>
+			<li><a href="#areas">Grid Areas</a></li>
+			<li><a href="#minmax">Sizing: minmax()</a></li>
+			<li><a href="#auto">Sizing: auto-fil and auto-fit</a></li>
+			<li><a href="#align">Align and Justify Grid Items</a></li>
+			<li><a href="#align-grid">Align and Justify the Grid</a></li>
+		</ul> -->
+
+
+	<h2 id="specs">Background and Specs</h2>
+	<p></p>
+	<p>Feature queries, <a href="https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/" target="_blank">@supports ()"</a>, allow you to determine if the browser supports a particular CSS property or value and then apply (or not) a block of CSS based on the answer. </p>
+	<p>To check whether a particular feature is available in a given browser, use <a href="https://caniuse.com/" target="_blank">Can I Use ___ ?</a></p>
+	<p><a href="#top">Back to Top</a></p>
+	<!-- HTML to encode the basic grid starts here -->
+
+	<h2 id="define">Defining a Flexbox</h2>
+	<p>T</p>
+
+
+	<h3>CSS required</h3>
+
+	<code>
+	<p>	/* BORDER BOX SIZING */
+
+<pre>html {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: inherit;
+       -moz-box-sizing: inherit;
+            box-sizing: inherit;
+}</pre>
+</p>
+<p>
+		/* FLEXBOX */
+<pre>.grid {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 100px;
+    grid-auto-rows: 100px;
+    grid-gap: 20px;
+}
+
+.grid div{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(0,95,107,0.8);
+    padding: 0.5em;
+}
+
+ .grid div:nth-child(odd) {
+    background-color: rgba(0,150,140,0.8);
+}
+
+.cells div {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(0,95,107,0.8);
+    padding: 0.5em;
+}
+
+.cells div:nth-child(odd) {
+    background-color: rgba(0,150,140,0.8);
+}
+</pre>
+</p>
+	</code>
+
+	<div class="grid cells">
+		<div>Div 1</div>
+		<div>Div 2</div>
+		<div>Div 3</div>
+		<div>Div 4</div>
+		<div>Div 5</div>
+		<div>Div 6</div>
+		<div>Div 7</div>
+		<div>Div 8</div>
+	</div>
+	<p><a href="#top">Back to Top</a></p>
+
+</body>
+</html>
