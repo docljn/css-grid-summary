@@ -7,6 +7,11 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body><h1>CSS Grid</H1>
+	<h2>Background and Specs</h2>
+	<p>For a full explanation, see <a href="https://gridbyexample.com/what/" target="_blank">What is CSS Grid Layout: Rachel Andrew</a></p>
+	<p>In addition, the spec for grid includes clear explanations of how previous layouts interact with grid, allowing <a href="https://rachelandrew.co.uk/css/cheatsheets/grid-fallbacks" target="_blank">Fallbacks and Overrides</a>.  Care is needed with item widths!</p>
+	<p>Feature queries, <a href="https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/" target="_blank">@supports ()"</a>, allow you to determine if the browser supports a particular CSS property or value and then apply (or not) a block of CSS based on the answer. </p>
+	<p>To check whether a particular feature is available in a given browser, use <a href="https://caniuse.com/" target="_blank">Can I Use ___ ?</a></p>
 	<!-- HTML to encode the basic grid starts here -->
 	<h2>Defining the Grid</h2>
 	<p>To define a grid use display:grid or display:inline-grid</p>
@@ -14,7 +19,7 @@
 	<p>By default the implicit grid elements are auto-sized to fit their content.  This can be altered using grid-auto-columns and grid-auto-rows to set a size for elements in the implicit grid.</p>
 	<p>Grid elements can overlap each other.</p>
 	<p>Grid-gap is the space between elements: <strong>care</strong> as if you define this as a percentage and do not specify a grid height, the row gap will be zero.  The same would apply to width and column gap.</p>
-	<p>For a full explanation, see <a href="https://gridbyexample.com/what/" target="_blank">What is CSS Grid Layout: Rachel Andrew</a></p>
+
 	<h3>CSS required</h3>
 
 	<code>
@@ -52,7 +57,7 @@
 }
 
  .grid div:nth-child(odd) {
-    background-color: turquoise;
+    background-color: rgba(0,150,140,0.8);
 }
 
 .cells div {
@@ -63,7 +68,7 @@
 }
 
 .cells div:nth-child(odd) {
-    background-color: turquoise;
+    background-color: rgba(0,150,140,0.8);
 }
 </pre>
 </p>
@@ -215,6 +220,7 @@
 	<h2>Grid Areas</h2>
 		<p>Once you have named the grid areas, you can use ascii art to lay out the grid.</p>
 			<p>In this layout, "." means an empty cell.</p>
+			<p>Media queries allow separate layouts for different devices and screen sizes.  They start with "@media" in the css: to review basic use see <a href="https://gridbyexample.com/examples/example13/" target="_blank">Rachel Andrew's site</a> again.
 	<h3>CSS required</h3>
 	<code>
 		<pre>header,
@@ -237,7 +243,7 @@ footer {
 
 article {
     grid-area: main;
-    background-color: turquoise;
+    background-color: rgba(0,150,140,0.8);
 }
 
 aside {
@@ -365,23 +371,97 @@ aside {
 
 <!-- Grid alignment -->
 
-  <h2>Alignment</h2>
-  <p>Of the grid, and of grid items</p>
+  <h2>Align and Justify Grid Items</h2>
+  <p>There is a <a href="https://rachelandrew.co.uk/css/cheatsheets/box-alignment" target="_blank">cheatsheet</a> for the new Box Alignment specs showing the differences between implementation in Flexbox and Grid.  Alignment can be positional, baseline, or distributed.</p>
+  <p>Justify: row access alignment (inline direction) with default "stretch"</p>
+  <p>Align-items: column access alignment again with default "stretch".</p>
+  <p>Other keywords are "center", "start" and "end"
+  <p>Alignment of grid elements is within the grid relative to the grid lines.</p>
+  <p>Align-self and Justify-self control where a single item sits within its grid area using the same keywords giving more precise control of display.</p>
   <h3>CSS required</h3>
 	<code>
-		<pre>
-		</pre>
+		<pre>/*on grid container i.e. affects all items*/
+.grid-align {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-auto-rows: minmax(90px, auto);
+    grid-gap: 20px;
+    justify-items: stretch;
+    align-items: center;
+}
+
+/*controlling an individual grid item*/
+.one {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    align-self: stretch;
+    justify-self: end;
+}
+
+.two {
+    grid-column: 3;
+    grid-row: 1 / 3;
+}
+
+.three {
+    grid-column: 2 / 4;
+    grid-row: 3;
+}
+
+.four {
+    grid-column: 1;
+    grid-row: 2 / 4;
+}</pre>
 	</code>
 
   <div class="grid-align cells">
-		<div>Div 1</div>
-		<div>Div 2</div>
-		<div>Div 3</div>
-		<div>Div 4</div>
-		<div>Div 5</div>
-		<div>Div 6</div>
-		<div>Div 7</div>
-		<div>Div 8</div>
+		<div class="one">Box 1</div>
+		<div class="two">Box 2</div>
+		<div class="three">Box 3</div>
+		<div class="four">Box 4</div>
+	</div>
+
+
+  <h2>Align and Justify the Grid</h2>
+
+	<p>Justify-content and Align-content apply when the grid is smaller than its container.</p>
+	<p>You can use "start", "end", "centre" as before: the default alignment is "start" in both dimensions. </p>
+	<p>There are also two new keywords: "space-around" and "space between" which ensure that the entire container is filled.  These are also used in flexbox.</p>
+	<p>The latter two have the result of making items larger than expected if they stretch over more than one track, as the grid gap is made bigger in order to utilise all available space.</p>
+
+	<h3>CSS required</h3>
+	<code>
+		<pre>.grid-align-grid {
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-auto-rows: 100px;
+    grid-gap: 20px;
+    width: 700px;
+    height: 500px;
+    border: 2px solid #666;
+    justify-content: space-between;
+    align-content: space-around;
+}
+
+.a {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+.d {
+    grid-column: 1;
+    grid-row: 2 / 4;
+}</pre>
+	</code>
+
+  <div class="grid-align-grid cells">
+		<div class="a">Box 1</div>
+		<div class="b">Box 2</div>
+		<div class="c">Box 3</div>
+		<div class="d">Box 4</div>
+		<div class="e">Box 5</div>
+		<div class="f">Box 6</div>
+
 	</div>
 
 </body>
