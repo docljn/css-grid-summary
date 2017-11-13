@@ -6,19 +6,39 @@
 	<!-- <link rel="stylesheet" href="reset.css"> -->
 	<link rel="stylesheet" href="styles.css">
 </head>
-<body><h1>CSS Grid</H1>
-	<h2>Background and Specs</h2>
+<body>
+
+	<h1 id="top">CSS Grid</h1>
+  <h2>Contents</h2>
+  <ul>
+			<li><a href="#specs">Background and Specs</a></li>
+			<li><a href="#define">Defining the Grid</a></li>
+			<li><a href="#fr">The fr unit</a></li>
+			<li><a href="#rep">Repeat Notation</a></li>
+			<li><a href="#order">Auto-Placement and Order Rules</a></li>
+			<li><a href="#line">Line-based Placement</a></li>
+			<li><a href="#areas">Grid Areas</a></li>
+			<li><a href="#minmax">Sizing: minmax()</a></li>
+			<li><a href="#auto">Sizing: auto-fil and auto-fit</a></li>
+			<li><a href="#align">Align and Justify Grid Items</a></li>
+			<li><a href="#align-grid">Align and Justify the Grid</a></li>
+		</ul>
+
+
+	<h2 id="specs">Background and Specs</h2>
 	<p>For a full explanation, see <a href="https://gridbyexample.com/what/" target="_blank">What is CSS Grid Layout: Rachel Andrew</a></p>
 	<p>In addition, the spec for grid includes clear explanations of how previous layouts interact with grid, allowing <a href="https://rachelandrew.co.uk/css/cheatsheets/grid-fallbacks" target="_blank">Fallbacks and Overrides</a>.  Care is needed with item widths!</p>
 	<p>Feature queries, <a href="https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/" target="_blank">@supports ()"</a>, allow you to determine if the browser supports a particular CSS property or value and then apply (or not) a block of CSS based on the answer. </p>
 	<p>To check whether a particular feature is available in a given browser, use <a href="https://caniuse.com/" target="_blank">Can I Use ___ ?</a></p>
+	<p><a href="#top">Back to Top</a></p>
 	<!-- HTML to encode the basic grid starts here -->
-	<h2>Defining the Grid</h2>
+	<h2 id="define">Defining the Grid</h2>
 	<p>To define a grid use display:grid or display:inline-grid</p>
 	<p>The explicit grid is what you create with grid-template-columns and grid-template-rows.  The implicit grid is created to allow for items placed outside the explicit grid.</p>
 	<p>By default the implicit grid elements are auto-sized to fit their content.  This can be altered using grid-auto-columns and grid-auto-rows to set a size for elements in the implicit grid.</p>
 	<p>Grid elements can overlap each other.</p>
 	<p>Grid-gap is the space between elements: <strong>care</strong> as if you define this as a percentage and do not specify a grid height, the row gap will be zero.  The same would apply to width and column gap.</p>
+
 
 	<h3>CSS required</h3>
 
@@ -84,9 +104,10 @@
 		<div>Div 7</div>
 		<div>Div 8</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 <!-- HTML to encode the fr grid starts here -->
-	<h2>The fr unit</h2>
+	<h2 id="fr">The fr unit</h2>
 	<p>Allows flexible resizing, mixing of absolute and flexible sizes</p>
 	<h3>CSS required</h3>
 	<code>
@@ -108,9 +129,10 @@
 		<div>Div 7</div>
 		<div>Div 8</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 	<!-- HTML to encode the repeat grid starts here -->
-	<h2>Repeat Notation</h2>
+	<h2 id="rep">Repeat Notation</h2>
 	<p>Allows building a grid of repeated units.</p>
 	<h3>CSS required</h3>
 	<code>
@@ -131,10 +153,11 @@
 		<div>Div 7</div>
 		<div>Div 8</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 
 <!-- HTML to encode the auto-placement and order grid starts here -->
-	<h2>Auto-Placement and Order Rules</h2>
+	<h2 id="order">Auto-Placement and Order Rules</h2>
 	<p>By default, direct children of a grid element are laid out by row, with the default behaviour as "grid-auto-flow: row".  "grid-auto-flow: column" changes this.</p>
 	<p>We can also change the display order, by targeting a specific element using the nth-child notation.</p>
 	<p>If order is not specified, the effect is to have elements with order equivalent to "0", with -1 coming earlier and 1 coming later.</p>
@@ -169,11 +192,12 @@
 		<div>Div 7</div>
 		<div>Div 8</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 
 	<!-- Placing Items on the Grid -->
 
-	<h2>Line-based Placement</h2>
+	<h2 id="line">Line-based Placement</h2>
 	<p>Grid lines are horizontal and vertical, and are indexed from "1". In a left-to-right language grid lines are numbered from left to right and top to bottom.  Line -1 is the rightmost line in the explicit grid.  The same logic applies to the grid lines associated with columns.</p>
 	<p>Options grid-column-start and -end give the grid lines between which the element should stretch.  Alternately the keyword span specifies the number of grid tracks an element shold span.</p>
 	<p>The default is to span one track of the grid, so this need not be specified, but only the starting grid line given.</p>
@@ -214,10 +238,11 @@
 		<div>Div 3</div>
 		<div>Div 4</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 
 
-	<h2>Grid Areas</h2>
+	<h2 id="areas">Grid Areas</h2>
 		<p>Once you have named the grid areas, you can use ascii art to lay out the grid.</p>
 			<p>In this layout, "." means an empty cell.</p>
 			<p>Media queries allow separate layouts for different devices and screen sizes.  They start with "@media" in the css: to review basic use see <a href="https://gridbyexample.com/examples/example13/" target="_blank">Rachel Andrew's site</a> again.
@@ -282,11 +307,12 @@ aside {
 		<aside>Aside</aside>
 		<footer>Footer</footer>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 
 <!-- Sizing elements in the grid -->
 
-	<h2>Sizing: minmax()</h2>
+	<h2 id="minmax">Sizing: minmax()</h2>
 		<p>minmax(length, length) sets a minimum and maximum size for an element.  Useful in e.g. grid-auto-rows to ensure that contents will not overflow the cell, but that cells also have a minimum size.
 		</p>
 
@@ -315,10 +341,11 @@ aside {
 		<div>Div 7</div>
 		<div>Div 8</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 
 
-   <h2>Sizing: auto-fill and auto-fit</h2>
+   <h2 id="auto">Sizing: auto-fill and auto-fit</h2>
 	  <p>Useful with the 'repeat' notation used to set up a grid layout.</p>
 	  <p>auto-fill: fill the grid with as many of a given size of cell as possible. If combined with minmax this gives flexibility in size above a given minimum but also allows flexibility in layout depending on the size of the viewport as the cells expand to fill any available extra space.</p>
 	  <p>However, if there are fewer cells than tracks in the viewport, those tracks are still visible and there will be whitespace at the end.</p>
@@ -367,11 +394,12 @@ aside {
 		<div>Div 7</div>
 		<div>Div 8</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 
 <!-- Grid alignment -->
 
-  <h2>Align and Justify Grid Items</h2>
+  <h2 id="align">Align and Justify Grid Items</h2>
   <p>There is a <a href="https://rachelandrew.co.uk/css/cheatsheets/box-alignment" target="_blank">cheatsheet</a> for the new Box Alignment specs showing the differences between implementation in Flexbox and Grid.  Alignment can be positional, baseline, or distributed.</p>
   <p>Justify: row access alignment (inline direction) with default "stretch"</p>
   <p>Align-items: column access alignment again with default "stretch".</p>
@@ -420,9 +448,10 @@ aside {
 		<div class="three">Box 3</div>
 		<div class="four">Box 4</div>
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 
-  <h2>Align and Justify the Grid</h2>
+  <h2 id="align-grid">Align and Justify the Grid</h2>
 
 	<p>Justify-content and Align-content apply when the grid is smaller than its container.</p>
 	<p>You can use "start", "end", "centre" as before: the default alignment is "start" in both dimensions. </p>
@@ -461,8 +490,8 @@ aside {
 		<div class="d">Box 4</div>
 		<div class="e">Box 5</div>
 		<div class="f">Box 6</div>
-
 	</div>
+	<p><a href="#top">Back to Top</a></p>
 
 </body>
 </html>
