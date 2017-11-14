@@ -29,6 +29,9 @@
 	height: 30em;
 }
 
+
+/*RESPONSIVE DESIGN*/
+
 .flex {
 	flex: 1 1 150px;
 }
@@ -39,4 +42,12 @@
 
 .flex-unequal:nth-child(2) {
   flex: 3 1 0;
+}
+
+
+/*DISPLAY ORDER*/
+
+
+.order:nth-child(1) {
+	order: 1 ;
 }

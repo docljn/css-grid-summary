@@ -176,6 +176,7 @@ html {
 	<p>By default, direct children of a grid element are laid out by row, with the default behaviour as "grid-auto-flow: row".  "grid-auto-flow: column" changes this.</p>
 	<p>We can also change the display order, by targeting a specific element using the nth-child notation.</p>
 	<p>If order is not specified, the effect is to have elements with order equivalent to "0", with -1 coming earlier and 1 coming later.</p>
+	<p>The grid-auto-flow: dense; attribute allows the grid to backfill, taking the content out of DOM order.</p>
 	<p><strong>Care:</strong> this can create a disconnect between the source order and the visual display and can cause problems for tab or assistive technology access.</p>
 
 	<h3>CSS required</h3>

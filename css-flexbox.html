@@ -22,8 +22,8 @@
 			<li><a href="#define">Defining a Flexbox</a></li>
 			<li><a href="#align">Align and Justify Flex Items</a></li>
 			<li><a href="#resp">Responsive Design</a></li>
-			 --><!-- <li><a href="#fr">The fr unit</a></li>
-			<li><a href="#rep">Repeat Notation</a></li>
+			<li><a href="#order">Display Order</a></li>
+			<!--<li><a href="#rep">Repeat Notation</a></li>
 			<li><a href="#order">Auto-Placement and Order Rules</a></li>
 			<li><a href="#line">Line-based Placement</a></li>
 			<li><a href="#areas">Grid Areas</a></li>
@@ -159,11 +159,13 @@ html {
 	</div>
 	<p><a href="#top">Back to Top</a></p>
 
+<!-- Responsive Design -->
+
 
 	<h2 id="resp">Responsive Design</h2>
 	<p>Because flexbox is content-out, it is responsive by default.  The use of space-around, space-between and stretch allow for content to be distributed equally between items, giving control of proportion.</p>
 	<p>To more closely control content distribution, flex items can be individually controlled using flex-grow (allows items to grow), flex-shrink (allows items to shrink) and flex-basis (gives the initial size before any extra space is distributed).  This is usually described by the shorthand "flex".</p>
-	<p>Flex applies according to the main axis of "flex-direction.</p>
+	<p>Flex applies according to the main axis of flex-direction, which can be row, column, row-reverse, or column-reverse.  The direction follows that of the language being used, so in a left-to-right language, flex-direction: row gives a left-to-right display order, and vice versa.</p>
 	<p>There's a useful <a href="https://madebymike.com.au/demos/flexbox-tester/" target="_blank">Flexbox Tester</a> made by Mike Riethmuller where you can explore the effect of changing attributes.</p>
 	<h3>Equal distribution of space</h3>
 	<p>In this example, applying the class .flex to all flex items means they can grow or shrink, and start at 150px before extra space is distributed equally between them.</p>
@@ -224,27 +226,28 @@ html {
 		</div>
 	</div>
 
-
-
 	<p><a href="#top">Back to Top</a></p>
 
 
+<!-- Display Order -->
 
-	<h2></h2>
-	<h3></h3>
+
+	<h2 id="order">Display Order</h2>
+	<p><strong>CARE: </strong>using flexbox only affects the visual order and not the logical order, and so can have negative implications for assistive technology.</p>
+	<p>The default value is order: 0; and it specifies the order relative to the rest of the flexible items inside the same container.  The value must be applied to the flex item(s), not the container.</p>
+
+	<h3>CSS Required</h3>
 	<code>
-		<pre></pre>
+		<pre>.order:nth-child(1) {
+	order: 1 ;
+}</pre>
 	</code>
 
-	<div class="box">
-		<div>Div 1</div>
-		<div>Div 2</div>
-		<div>Div 3</div>
-		<div>Div 4</div>
-		<div>Div 5</div>
-		<div>Div 6</div>
-		<div>Div 7</div>
-		<div>Div 8</div>
+	<div class="box align">
+		<div class="order">Div 1</div>
+		<div class="order">Div 2</div>
+		<div class="order">Div 3</div>
+		<div class="order">Div 4</div>
 	</div>
 	<p><a href="#top">Back to Top</a></p>
 
