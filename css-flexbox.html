@@ -11,10 +11,11 @@
 	<h1 id="top">CSS Flexbox</h1>
 	<nav>
 		<ul>
-			<li><a href="index.html">Home</a></li>
 			<li><a href="css-grid.html">Grid</a></li>
 			<li><a href="css-flexbox.html">Flexbox</a></li>
+			<li><a href="#">Shapes: coming soon</a></li>
 		</ul>
+
   </nav>
   <h2>Contents</h2>
   <ul>
@@ -165,7 +166,7 @@ html {
 	<h2 id="resp">Responsive Design</h2>
 	<p>Because flexbox is content-out, it is responsive by default.  The use of space-around, space-between and stretch allow for content to be distributed equally between items, giving control of proportion.</p>
 	<p>To more closely control content distribution, flex items can be individually controlled using flex-grow (allows items to grow), flex-shrink (allows items to shrink) and flex-basis (gives the initial size before any extra space is distributed).  This is usually described by the shorthand "flex".</p>
-	<p>Flex applies according to the main axis of flex-direction, which can be row, column, row-reverse, or column-reverse.  The direction follows that of the language being used, so in a left-to-right language, flex-direction: row gives a left-to-right display order, and vice versa.</p>
+	<p>Flex applies according to the main axis of flex-direction, which can be row, column, row-reverse, or column-reverse.  The direction follows that of the language being used, so in a left-to-right language, flex-direction: row gives a left-to-right display order, and vice versa.  cf. <a href="https://css-tricks.com/almanac/properties/w/writing-mode/" target="_blank">CSS writing-mode</a>.</p>
 	<p>There's a useful <a href="https://madebymike.com.au/demos/flexbox-tester/" target="_blank">Flexbox Tester</a> made by Mike Riethmuller where you can explore the effect of changing attributes.</p>
 	<h3>Equal distribution of space</h3>
 	<p>In this example, applying the class .flex to all flex items means they can grow or shrink, and start at 150px before extra space is distributed equally between them.</p>
@@ -238,7 +239,7 @@ html {
 
 	<h3>CSS Required</h3>
 	<code>
-		<pre>.order:nth-child(1) {
+		<pre>.order:nth-child(even) {
 	order: 1 ;
 }</pre>
 	</code>
@@ -294,8 +295,8 @@ html {
 	<h2>Sources</h2>
 	<ul>
 		<li><a href="https://www.smashingmagazine.com/2016/11/css-grids-flexbox-box-alignment-new-layout-standard/" target="_blank">Grid and Flexbox at Smashing Magazine</a></li>
-		<li><a href="" target="_blank"></a></li>
-		<li><a href="" target="_blank"></a></li>
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank">MDN: Basic concepts of flexbox</a></li>
+		<li><a href="https://flexbox.io" target="_blank">WesBos: What the Flexbox!</a></li>
 		<li><a href="" target="_blank"></a></li>
 		<li><a href="" target="_blank"></a></li>
 		<li><a href="" target="_blank"></a></li>

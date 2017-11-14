@@ -48,6 +48,6 @@
 /*DISPLAY ORDER*/
 
 
-.order:nth-child(1) {
+.order:nth-child(even) {
 	order: 1 ;
 }
