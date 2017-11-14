@@ -9,44 +9,62 @@
 <body>
 
 	<h1 id="top">CSS Flexbox</h1>
-	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="css-grid.html">Grid</a></li>
-		<li><a href="css-flexbox.html">Flexbox</a></li>
-	</ul>
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="css-grid.html">Grid</a></li>
+			<li><a href="css-flexbox.html">Flexbox</a></li>
+		</ul>
+  </nav>
   <h2>Contents</h2>
-  <!-- <ul>
+  <ul>
 			<li><a href="#specs">Background and Specs</a></li>
-			<li><a href="#define">Defining the Grid</a></li>
-			<li><a href="#fr">The fr unit</a></li>
+			<li><a href="#define">Defining a Flexbox</a></li>
+			<li><a href="#align">Align and Justify Flex Items</a></li>
+			<li><a href="#resp">Responsive Design</a></li>
+			 --><!-- <li><a href="#fr">The fr unit</a></li>
 			<li><a href="#rep">Repeat Notation</a></li>
 			<li><a href="#order">Auto-Placement and Order Rules</a></li>
 			<li><a href="#line">Line-based Placement</a></li>
 			<li><a href="#areas">Grid Areas</a></li>
 			<li><a href="#minmax">Sizing: minmax()</a></li>
 			<li><a href="#auto">Sizing: auto-fil and auto-fit</a></li>
-			<li><a href="#align">Align and Justify Grid Items</a></li>
-			<li><a href="#align-grid">Align and Justify the Grid</a></li>
-		</ul> -->
+			 -->
+		</ul>
 
 
 	<h2 id="specs">Background and Specs</h2>
-	<p></p>
+	<p>Flexbox is ideal for one-dimensional layouts (row OR column)where you want the size of items to dictate their layout, and you want to distribute space.</p>
 	<p>Feature queries, <a href="https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/" target="_blank">@supports ()"</a>, allow you to determine if the browser supports a particular CSS property or value and then apply (or not) a block of CSS based on the answer. </p>
 	<p>To check whether a particular feature is available in a given browser, use <a href="https://caniuse.com/" target="_blank">Can I Use ___ ?</a></p>
 	<p><a href="#top">Back to Top</a></p>
-	<!-- HTML to encode the basic grid starts here -->
+
+	<!-- Defining Flexbox-->
 
 	<h2 id="define">Defining a Flexbox</h2>
-	<p>T</p>
+	<p>To define a flexbox, simply state "display: flex;" and the direct child elements will become flex items.</p>
+	<p>The initial values of a flex container are:</p>
+	<code>
+		<pre>flex-direction: row
+flex-wrap: no-wrap
+align-items: stretch
+justify-content: flex-start</pre>
+	</code>
+	<p>The initial values of flex items are:</p>
+	<code>
+		<pre>flex-grow: 0
+flex-shrink: 1
+flex-basis: auto</pre>
+	</code>
+	<p>These initial values apply without being specified, so all you need to do is set "display: flex" on a parent and flexbox will work with the flex container width equal to the width of its parent element.</p>
 
 
 	<h3>CSS required</h3>
 
 	<code>
-	<p>	/* BORDER BOX SIZING */
+<pre>/* BORDER BOX SIZING */
 
-<pre>html {
+html {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -58,44 +76,30 @@
     -webkit-box-sizing: inherit;
        -moz-box-sizing: inherit;
             box-sizing: inherit;
-}</pre>
-</p>
-<p>
-		/* FLEXBOX */
-<pre>.grid {
-    display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: 200px 100px;
-    grid-auto-rows: 100px;
-    grid-gap: 20px;
 }
 
-.grid div{
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: rgba(0,95,107,0.8);
-    padding: 0.5em;
+/* FLEXBOX */
+
+.box {
+  display: flex;
+  min-height: 100px;
+  border: 3px solid black;
 }
 
- .grid div:nth-child(odd) {
-    background-color: rgba(0,150,140,0.8);
+.box div {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(0,95,107,0.8);
+  padding: 0.5em;
 }
 
-.cells div {
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: rgba(0,95,107,0.8);
-    padding: 0.5em;
-}
-
-.cells div:nth-child(odd) {
+.box div:nth-child(odd) {
     background-color: rgba(0,150,140,0.8);
 }
 </pre>
-</p>
 	</code>
 
-	<div class="grid cells">
+	<div class="box">
 		<div>Div 1</div>
 		<div>Div 2</div>
 		<div>Div 3</div>
@@ -106,6 +110,193 @@
 		<div>Div 8</div>
 	</div>
 	<p><a href="#top">Back to Top</a></p>
+
+	<!-- Aligning flexbox items -->
+
+	<h2 id="align">Align and Justify Flex Items</h2>
+	<p>The main axis of a flex container is defined by the flex-direction property, with the cross axis perpendicular to this.
+	<p>Cross-axis alignment: align-items.  The height of the container will then be determined by the item with most content, unless a specific height is defined for the container. Align-items can be stretch (default), flex-start, flex-end, baseline.</p>
+	<p>Main axis alignment: justify-content. This can be flex-start (default), flex-end, center, space-around, space-between. </p>
+	<h3>CSS required: flex-direction: row (default)</h3>
+	<code>
+		<pre>.align {
+	align-items: center;
+	justify-content: space-around;
+}</pre>
+	</code>
+
+	<div class="box align">
+		<div><p>Div 1</p>
+			<p>More content.</p></div>
+		<div>Div 2</div>
+		<div>Div 3</div>
+		<div>Div 4</div>
+		<div>Div 5</div>
+		<div>Div 6</div>
+		<div>Div 7</div>
+		<div>Div 8</div>
+	</div>
+
+	<h3>CSS required: flex-direction: column</h3>
+	<code>
+		<pre>.align {
+	align-items: center;
+	justify-content: space-around;
+  flex-direction: column;
+}</pre>
+	</code>
+
+	<div class="box align column">
+		<div><p>Div 1</p>
+			<p>More content.</p></div>
+		<div>Div 2</div>
+		<div>Div 3</div>
+		<div>Div 4</div>
+		<div>Div 5</div>
+		<div>Div 6</div>
+		<div>Div 7</div>
+		<div>Div 8</div>
+	</div>
+	<p><a href="#top">Back to Top</a></p>
+
+
+	<h2 id="resp">Responsive Design</h2>
+	<p>Because flexbox is content-out, it is responsive by default.  The use of space-around, space-between and stretch allow for content to be distributed equally between items, giving control of proportion.</p>
+	<p>To more closely control content distribution, flex items can be individually controlled using flex-grow (allows items to grow), flex-shrink (allows items to shrink) and flex-basis (gives the initial size before any extra space is distributed).  This is usually described by the shorthand "flex".</p>
+	<p>Flex applies according to the main axis of "flex-direction.</p>
+	<p>There's a useful <a href="https://madebymike.com.au/demos/flexbox-tester/" target="_blank">Flexbox Tester</a> made by Mike Riethmuller where you can explore the effect of changing attributes.</p>
+	<h3>Equal distribution of space</h3>
+	<p>In this example, applying the class .flex to all flex items means they can grow or shrink, and start at 150px before extra space is distributed equally between them.</p>
+	<h3>CSS Required</h3>
+	<code>
+		<pre>.flex {
+  flex: 1 1 150px;
+}</pre>
+	</code>
+
+	<div class="box">
+		<div class="flex">Div 1
+			<p>Has the most content, in larger and longer paragraphs.</p>
+			<p>Has the most content, in larger and longer paragraphs.</p>
+		</div>
+		<div class="flex">Div 2
+			<p></p>
+		</div>
+		<div class="flex">Div 3
+			<p>Intermediate content.</p>
+			<p>Intermediate content.</p>
+			<p>Intermediate content.</p>
+		</div>
+	</div>
+
+
+	<h3>Unequal distribution of space</h3>
+	<p>The space to be distributed is what is left over after the amount needed for flex-basis has been taken into account. In this case, the second flex item is allocated three parts of the remaining space, with all others allocated a single part.</p>
+
+	<h3>CSS Required</h3>
+	<code>
+		<pre>.flex-unequal {
+  flex: 1 1 0;
+}
+
+.flex-unequal:nth-child(2) {
+  flex: 3 1 0;
+}</pre>
+	</code>
+
+
+
+	<div class="box">
+		<div class="flex-unequal">Div 1
+			<p>Has the most content, in larger and longer paragraphs.</p>
+			<p>Has the most content, in larger and longer paragraphs.</p>
+		</div>
+		<div class="flex-unequal">Div 2
+			<p>Is allocated extra space by the flex attribute.</p>
+		</div>
+		<div class="flex-unequal">Div 3
+			<p></p>
+		</div>
+		<div class="flex-unequal">Div 4
+			<p>Intermediate content.</p>
+			<p>Intermediate content.</p>
+			<p>Intermediate content.</p>
+		</div>
+	</div>
+
+
+
+	<p><a href="#top">Back to Top</a></p>
+
+
+
+	<h2></h2>
+	<h3></h3>
+	<code>
+		<pre></pre>
+	</code>
+
+	<div class="box">
+		<div>Div 1</div>
+		<div>Div 2</div>
+		<div>Div 3</div>
+		<div>Div 4</div>
+		<div>Div 5</div>
+		<div>Div 6</div>
+		<div>Div 7</div>
+		<div>Div 8</div>
+	</div>
+	<p><a href="#top">Back to Top</a></p>
+
+
+
+	<h2></h2>
+	<h3></h3>
+	<code>
+		<pre></pre>
+	</code>
+
+	<div class="box">
+		<div>Div 1</div>
+		<div>Div 2</div>
+		<div>Div 3</div>
+		<div>Div 4</div>
+		<div>Div 5</div>
+		<div>Div 6</div>
+		<div>Div 7</div>
+		<div>Div 8</div>
+	</div>
+	<p><a href="#top">Back to Top</a></p>
+
+
+
+	<h2></h2>
+	<h3></h3>
+	<code>
+		<pre></pre>
+	</code>
+
+	<div class="box">
+		<div>Div 1</div>
+		<div>Div 2</div>
+		<div>Div 3</div>
+		<div>Div 4</div>
+		<div>Div 5</div>
+		<div>Div 6</div>
+		<div>Div 7</div>
+		<div>Div 8</div>
+	</div>
+	<p><a href="#top">Back to Top</a></p>
+
+	<h2>Sources</h2>
+	<ul>
+		<li><a href="https://www.smashingmagazine.com/2016/11/css-grids-flexbox-box-alignment-new-layout-standard/" target="_blank">Grid and Flexbox at Smashing Magazine</a></li>
+		<li><a href="" target="_blank"></a></li>
+		<li><a href="" target="_blank"></a></li>
+		<li><a href="" target="_blank"></a></li>
+		<li><a href="" target="_blank"></a></li>
+		<li><a href="" target="_blank"></a></li>
+	</ul>
 
 </body>
 </html>

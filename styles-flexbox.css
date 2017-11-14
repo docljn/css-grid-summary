@@ -1,0 +1,42 @@
+/*FLEXBOX*/
+.box {
+	display: flex;
+	min-height: 100px;
+	border: 3px solid black;
+}
+
+.box div {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(0,95,107,0.8);
+  padding: 0.5em;
+}
+
+.box div:nth-child(odd) {
+    background-color: rgba(0,150,140,0.8);
+}
+
+
+/*ALIGN AND JUSTIFY*/
+
+.align {
+	align-items: center;
+	justify-content: space-around;
+}
+
+.column {
+	flex-direction: column;
+	height: 30em;
+}
+
+.flex {
+	flex: 1 1 150px;
+}
+
+.flex-unequal {
+	flex: 1 1 0;
+}
+
+.flex-unequal:nth-child(2) {
+  flex: 3 1 0;
+}

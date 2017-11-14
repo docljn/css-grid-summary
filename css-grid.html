@@ -9,11 +9,13 @@
 <body>
 
 	<h1 id="top">CSS Grid</h1>
-	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="css-grid.html">Grid</a></li>
-		<li><a href="css-flexbox.html">Flexbox</a></li>
-	</ul>
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="css-grid.html">Grid</a></li>
+			<li><a href="css-flexbox.html">Flexbox</a></li>
+		</ul>
+  </nav>
   <h2>Contents</h2>
   <ul>
 			<li><a href="#specs">Background and Specs</a></li>
@@ -24,22 +26,30 @@
 			<li><a href="#line">Line-based Placement</a></li>
 			<li><a href="#areas">Grid Areas</a></li>
 			<li><a href="#minmax">Sizing: minmax()</a></li>
-			<li><a href="#auto">Sizing: auto-fil and auto-fit</a></li>
+			<li><a href="#auto">Sizing: auto-fill and auto-fit</a></li>
 			<li><a href="#align">Align and Justify Grid Items</a></li>
 			<li><a href="#align-grid">Align and Justify the Grid</a></li>
 		</ul>
 
 
 	<h2 id="specs">Background and Specs</h2>
-	<p>The primary advantage of grid (and flexbox) is that items in the layout understand themselves as part of the wider layout. It's an extension of the idea behind display: table which created relationships between items based on CSS.</p>
+	<p>The primary advantage of grid (and flexbox) is that items in the layout understand themselves as part of the wider layout. It's an extension of the idea behind display: table which created relationships between items based on CSS.  Grid is for two-dimensional layouts, where flexbox is for one-dimension.  Flexbox (and every other layout method) works from the content out, while Grid works from the container in.  Grid also alows overlap of items.</p>
 	<p>For a full explanation, see <a href="https://gridbyexample.com/what/" target="_blank">What is CSS Grid Layout: Rachel Andrew</a></p>
-	<p>In addition, the spec for grid includes clear explanations of how previous layouts interact with grid, allowing <a href="https://rachelandrew.co.uk/css/cheatsheets/grid-fallbacks" target="_blank">Fallbacks and Overrides</a>.  Care is needed with item widths!</p>
+	<p>In addition, the spec for grid includes clear explanations of how previous layouts interact with grid, allowing <a href="https://rachelandrew.co.uk/css/cheatsheets/grid-fallbacks" target="_blank">Fallbacks and Overrides</a>.  Care is needed with item widths and margins, as these are not ignored by grid!</p>
 	<p>Feature queries, <a href="https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/" target="_blank">@supports ()"</a>, allow you to determine if the browser supports a particular CSS property or value and then apply (or not) a block of CSS based on the answer. </p>
 	<p>To check whether a particular feature is available in a given browser, use <a href="https://caniuse.com/" target="_blank">Can I Use ___ ?</a></p>
 	<p><a href="#top">Back to Top</a></p>
 	<!-- HTML to encode the basic grid starts here -->
 	<h2 id="define">Defining the Grid</h2>
-	<p>To define a grid use display:grid or display:inline-grid</p>
+	<p>To define a grid use "display:grid;" or "display:inline-grid;"</p>
+	<p>The initial values of the grid container are:</p>
+	<code>
+		<pre>grid-auto-flow: row
+grid-auto-rows: auto
+align-items: stretch
+justify-items: stretch
+grid-gap: 0</pre>
+	</code>
 	<p>The explicit grid is what you create with grid-template-columns and grid-template-rows.  The implicit grid is created to allow for items placed outside the explicit grid.</p>
 	<p>By default the implicit grid elements are auto-sized to fit their content.  This can be altered using grid-auto-columns and grid-auto-rows to set a size for elements in the implicit grid.</p>
 	<p>Grid elements can overlap each other.</p>
@@ -49,9 +59,9 @@
 	<h3>CSS required</h3>
 
 	<code>
-	<p>	/* BORDER BOX SIZING */
+	<pre>/* BORDER BOX SIZING */
 
-<pre>html {
+html {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -63,11 +73,10 @@
     -webkit-box-sizing: inherit;
        -moz-box-sizing: inherit;
             box-sizing: inherit;
-}</pre>
-</p>
-<p>
-		/* GRID */
-<pre>.grid {
+}
+
+/* GRID */
+.grid {
     display: grid;
     grid-template-columns: 200px 200px 200px;
     grid-template-rows: 200px 100px;
@@ -97,7 +106,7 @@
     background-color: rgba(0,150,140,0.8);
 }
 </pre>
-</p>
+
 	</code>
 
 	<div class="grid cells">
@@ -408,7 +417,7 @@ aside {
   <h2 id="align">Align and Justify Grid Items</h2>
   <p>There is a <a href="https://rachelandrew.co.uk/css/cheatsheets/box-alignment" target="_blank">cheatsheet</a> for the new Box Alignment specs showing the differences between implementation in Flexbox and Grid.  Alignment can be positional, baseline, or distributed.</p>
   <p>Justify: row access alignment (inline direction) with default "stretch"</p>
-  <p>Align-items: column access alignment again with default "stretch".</p>
+  <p>Align-items: column access (block direction) alignment again with default "stretch".</p>
   <p>Other keywords are "center", "start" and "end"
   <p>Alignment of grid elements is within the grid relative to the grid lines.</p>
   <p>Align-self and Justify-self control where a single item sits within its grid area using the same keywords giving more precise control of display.</p>
